@@ -279,22 +279,23 @@ function ProductsContent() {
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-        <div className="mb-6 flex flex-col gap-4 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm md:flex-row md:items-end md:justify-between">
+        <div className="mb-6 flex flex-col gap-4 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm ring-1 ring-slate-950/[0.02] md:flex-row md:items-end md:justify-between">
           <div>
             <p className="text-sm font-medium uppercase tracking-wide text-indigo-600">Products</p>
-            <h1 className="mt-1 text-2xl font-bold text-slate-900">Product catalog</h1>
+            <h1 className="mt-1 text-3xl font-bold tracking-tight text-slate-900">Product catalog</h1>
+            <p className="mt-1 text-sm text-slate-500">Manage inventory, pricing, and product details.</p>
           </div>
 
           <button
             type="button"
             onClick={() => router.push("/products/new")}
-            className="rounded-lg bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-indigo-500"
+            className="rounded-xl bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-500"
           >
             Add Product
           </button>
         </div>
 
-        <div className="mb-6 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+        <div className="mb-6 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
           <div className="grid gap-4 lg:grid-cols-[2fr_1.5fr_1.5fr]">
             <ProductSearch value={searchInput} onChange={setSearchInput} />
             <ProductFilters

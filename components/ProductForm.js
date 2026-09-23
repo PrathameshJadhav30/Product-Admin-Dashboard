@@ -52,7 +52,7 @@ export default function ProductForm({ initialValues, onSubmit, submitLabel, load
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-5 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+    <form onSubmit={handleSubmit} className="space-y-6 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm ring-1 ring-slate-950/[0.02] sm:p-8">
       <div className="grid gap-5 md:grid-cols-2">
         <div className="md:col-span-2">
           <label className="mb-1 block text-sm font-medium text-slate-700">Title</label>
@@ -60,7 +60,7 @@ export default function ProductForm({ initialValues, onSubmit, submitLabel, load
             name="title"
             value={formData.title}
             onChange={handleChange}
-            className="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-slate-900 focus:border-indigo-500"
+            className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2.5 text-slate-900 shadow-sm transition focus:border-indigo-500 focus:bg-white"
             placeholder="Product title"
           />
           {errors.title && <p className="mt-1 text-xs text-red-600">{errors.title}</p>}
@@ -73,7 +73,7 @@ export default function ProductForm({ initialValues, onSubmit, submitLabel, load
             value={formData.description}
             onChange={handleChange}
             rows={4}
-            className="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-slate-900 focus:border-indigo-500"
+            className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2.5 text-slate-900 shadow-sm transition focus:border-indigo-500 focus:bg-white"
             placeholder="Describe the product"
           />
           {errors.description && <p className="mt-1 text-xs text-red-600">{errors.description}</p>}
@@ -85,12 +85,12 @@ export default function ProductForm({ initialValues, onSubmit, submitLabel, load
             name="category"
             value={formData.category}
             onChange={handleChange}
-            className="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-slate-900 focus:border-indigo-500"
+            className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2.5 text-slate-900 shadow-sm transition focus:border-indigo-500 focus:bg-white"
           >
             <option value="">Select category</option>
             {categories.map((category) => (
               <option key={category} value={category}>
-                {category}
+                {String(category)}
               </option>
             ))}
           </select>
@@ -144,7 +144,7 @@ export default function ProductForm({ initialValues, onSubmit, submitLabel, load
             name="image"
             value={formData.image}
             onChange={handleChange}
-            className="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-slate-900 focus:border-indigo-500"
+            className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2.5 text-slate-900 shadow-sm transition focus:border-indigo-500 focus:bg-white"
             placeholder="https://example.com/image.jpg"
           />
           {errors.image && <p className="mt-1 text-xs text-red-600">{errors.image}</p>}
@@ -155,7 +155,7 @@ export default function ProductForm({ initialValues, onSubmit, submitLabel, load
         <button
           type="submit"
           disabled={loading}
-          className="rounded-lg bg-indigo-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-indigo-500 disabled:cursor-not-allowed disabled:opacity-60"
+            className="rounded-xl bg-indigo-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-500 disabled:cursor-not-allowed disabled:opacity-60"
         >
           {loading ? "Saving..." : submitLabel}
         </button>

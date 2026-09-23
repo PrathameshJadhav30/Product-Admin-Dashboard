@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import ConfirmDialog from "@/components/ConfirmDialog";
 import EmptyState from "@/components/EmptyState";
@@ -39,6 +39,16 @@ function sortProducts(items, sortValue) {
 }
 
 export default function ProductsPage() {
+  return (
+    <ProtectedRoute>
+      <Suspense fallback={<LoadingSpinner label="Loading products..." />}>
+        <ProductsContent />
+      </Suspense>
+    </ProtectedRoute>
+  );
+}
+
+function ProductsContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { localChanges, markDeletedProduct } = useProductContext();
@@ -248,8 +258,7 @@ export default function ProductsPage() {
   };
 
   return (
-    <ProtectedRoute>
-      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+    <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
         <div className="mb-6 flex flex-col gap-4 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm md:flex-row md:items-end md:justify-between">
           <div>
             <p className="text-sm font-medium uppercase tracking-wide text-indigo-600">Products</p>
@@ -319,6 +328,6 @@ export default function ProductsPage() {
           loading={deleteLoading}
         />
       </div>
-    </ProtectedRoute>
+    </div>
   );
 }

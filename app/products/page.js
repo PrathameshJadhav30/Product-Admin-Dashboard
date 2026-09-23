@@ -17,6 +17,26 @@ import { deleteProduct, getCategories, getProducts, getProductsByCategory, searc
 import { mergeLocalProductChanges } from "@/utils/productState";
 import { normalizeLimit, normalizePage, normalizeSort } from "@/utils/validation";
 
+function normalizeCategories(input) {
+  const list = Array.isArray(input) ? input : [];
+
+  return Array.from(
+    new Set(
+      list
+        .map((item) => {
+          if (typeof item === "string") return item.trim();
+          if (item && typeof item === "object") {
+            return [item.name, item.title, item.category, item.slug]
+              .find((value) => typeof value === "string" && value.trim())
+              ?.trim();
+          }
+          return "";
+        })
+        .filter(Boolean)
+    )
+  );
+}
+
 function sortProducts(items, sortValue) {
   const sorted = [...items];
 
@@ -99,7 +119,7 @@ function ProductsContent() {
     const loadCategories = async () => {
       try {
         const response = await getCategories();
-        setCategories(Array.isArray(response) ? response : []);
+        setCategories(normalizeCategories(response));
       } catch {
         setCategories([]);
       }

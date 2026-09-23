@@ -9,11 +9,11 @@ export default function ProductFilters({ categories, selectedCategory, onCategor
           id="category-filter"
           value={selectedCategory}
           onChange={(event) => onCategoryChange(event.target.value)}
-          className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-slate-900 focus:border-indigo-500"
+          className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2.5 text-slate-900 shadow-sm transition focus:border-indigo-500 focus:bg-white"
         >
           <option value="all">All Categories</option>
           {categories.map((category) => (
-            <option key={category} value={category}>
+            <option key={String(category)} value={String(category)}>
               {category}
             </option>
           ))}
@@ -28,7 +28,7 @@ export default function ProductFilters({ categories, selectedCategory, onCategor
           id="sort-filter"
           value={sortValue}
           onChange={(event) => onSortChange(event.target.value)}
-          className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-slate-900 focus:border-indigo-500"
+          className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2.5 text-slate-900 shadow-sm transition focus:border-indigo-500 focus:bg-white"
         >
           <option value="default">Default</option>
           <option value="price-asc">Price: Low to High</option>

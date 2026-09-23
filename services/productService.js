@@ -1,13 +1,22 @@
 import axiosInstance from "@/lib/axios";
 
-export async function getProducts(params = {}) {
-  const response = await axiosInstance.get("/products", { params });
+export async function getProducts(params = {}, signal) {
+  const response = await axiosInstance.get("/products", { params, signal });
   return response.data;
 }
 
-export async function searchProducts(query, params = {}) {
+export async function searchProducts(query, params = {}, signal) {
   const response = await axiosInstance.get("/products/search", {
     params: { q: query, ...params },
+    signal,
+  });
+  return response.data;
+}
+
+export async function getProductsByCategory(category, params = {}, signal) {
+  const response = await axiosInstance.get(`/products/category/${category}`, {
+    params,
+    signal,
   });
   return response.data;
 }

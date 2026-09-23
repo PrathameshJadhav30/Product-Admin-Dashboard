@@ -328,6 +328,5 @@ function ProductsContent() {
           loading={deleteLoading}
         />
       </div>
-    </div>
   );
 }
